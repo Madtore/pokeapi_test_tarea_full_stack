@@ -1,0 +1,42 @@
+
+.container {
+    padding: 16px;
+  }
+  
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .grid-item {
+    padding: 10px;
+  }
+  
+
+  .grid-item-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .grid-item-right {
+    display: block;
+  }
+  
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 2rem;
+  }
+  
+
+  .mt-4 {
+    margin-top: 16px;
+  }
+  

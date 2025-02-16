@@ -1,0 +1,31 @@
+
+@if (evolutions.length > 0) {
+<div  class="container">
+  <p-card header="Cadena Evolutiva">
+    <p-carousel
+      [value]="evolutions"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="false"
+      [page]="currentIndex"
+      [showNavigators]="evolutions.length > 1"
+      [showIndicators]="evolutions.length > 1"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-evolution pTemplate="item" class="w-full">
+        <div>
+          <div>
+            <div class="text-center">
+              <h3>{{ evolution.name | titlecase }}</h3>
+              <img [src]="evolution.image" [alt]="evolution.name" class="evolution-image" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </p-card>
+</div>
+}
+
+
+  

@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="grid-container">
+    <div class="grid-item grid-item-left">
+        <app-pokemon-filter (pokemonSelected)="onPokemonSelected($event)"></app-pokemon-filter>
+    </div>  
+    <div class="grid-item grid-item-right">
+      <div *ngIf="loading" class="loading-container">
+        <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+      </div>
+      <app-pokemon-details [pokemon]="pokemonDetails"></app-pokemon-details>
+    </div>
+  </div>
+</div>
+
+
+
+

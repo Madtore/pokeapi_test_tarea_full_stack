@@ -1,0 +1,129 @@
+@if (!pokemon && !loading) {
+  <div class="no-pokemon-message">
+    <h3>Selecciona un Pokémon para ver sus detalles</h3>
+  </div>
+}
+
+@if (loading) {
+  <div class="d-flex justify-content-center align-items-start" style="height: 100vh;">
+    <div class="spinner-grow text-secondary me-3" role="status">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-secondary me-3" role="status" style="animation-delay: 0.2s;">
+      <span class="sr-only"></span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status" style="animation-delay: 0.4s;">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+}
+
+@if (pokemon && !loading) {
+  <div class="pokemon-details">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">{{ pokemon.name | titlecase }}</h1>
+        
+        <app-evolution-chain 
+          [evolutionChainId]="pokemon.evolutionChainId" 
+          [currentPokemonId]="pokemon.id" 
+          class="app-evolution-card">
+        </app-evolution-chain>
+      </div>
+      
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Estadísticas</div>
+          <div class="card-body">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Estadística</th>
+                  <th>Valor Base</th>
+                  <th>Barra</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (stat of pokemon.stats; track stat.name) {
+                  <tr>
+                    <td>{{ getStatName(stat.name) }}</td>
+                    <td>{{ stat.base }}</td>
+                    <td>
+                      <div class="stat-bar-container">
+                        <div class="stat-bar" [style.width.%]="(stat.base / 255) * 100"></div>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-12">
+        <div class="card mt-3">
+          <div class="card-header">Datos</div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center">Tipo</th>
+                  <th class="text-center">Altura</th>
+                  <th class="text-center">Peso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">
+                    <div class="type-tags">
+                      @for (type of pokemon.types; track type) {
+                        <span class="badge" [ngStyle]="{'background-color': getTypeColor(type)}">
+                          {{ type | titlecase }}
+                        </span>
+                      }
+                    </div>
+                  </td>
+                  <td class="text-center">{{ pokemon.height }}m</td>
+                  <td class="text-center">{{ pokemon.weight }}kg</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-12">
+        <div class="card mt-3">
+          <div class="card-header">Habilidades</div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (ability of pokemon.abilities; track ability.name) {
+                  <tr>
+                    <td>{{ ability.name | titlecase }}</td>
+                    <td>{{ ability.description }}</td>
+                    <td>
+                      <span class="badge" 
+                            [ngStyle]="{'background-color': ability.isHidden ? '#ffc107' : '#17a2b8'}">
+                        {{ ability.isHidden ? 'Oculta' : 'Normal' }}
+                      </span>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
