@@ -40,3 +40,12 @@
     margin-top: 16px;
   }
   
+  .no-pokemon-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #888;
+  }

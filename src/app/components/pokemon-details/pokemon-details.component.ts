@@ -24,34 +24,21 @@ import { Pokemon } from '../../models/pokemon.model';
 })
 export class PokemonDetailsComponent implements OnInit{
   @Input() pokemon: Pokemon | null = null;
-  loading: boolean = false;
+  
   
   
   constructor() {}
   ngOnInit(): void {
-    this.checkPokemon();
+    
   }
   
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['pokemon']) {
-      console.log('Pokemon changed:', changes['pokemon'].currentValue);
-      this.checkPokemon();
+      console.log('Pokemon changed:', changes['pokemon'].currentValue);  
     }
   }
   
-  private checkPokemon(): void {
-    if (!this.pokemon) {
-      this.loading = true;
-    
-      setTimeout(() => {
-        if (!this.pokemon) { 
-          this.loading = false;
-        }
-      }, 2000);
-    } else {
-      this.loading = false;
-    }
-  }
+
   
   getTypeColor(type: string): string {
     const typeColors: Record<string, string> = {

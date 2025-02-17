@@ -1,24 +1,5 @@
-@if (!pokemon && !loading) {
-  <div class="no-pokemon-message">
-    <h3>Selecciona un Pokémon para ver sus detalles</h3>
-  </div>
-}
 
-@if (loading) {
-  <div class="d-flex justify-content-center align-items-start" style="height: 100vh;">
-    <div class="spinner-grow text-secondary me-3" role="status">
-      <span class="sr-only"></span>
-    </div>
-    <div class="spinner-grow text-secondary me-3" role="status" style="animation-delay: 0.2s;">
-      <span class="sr-only"></span>
-    </div>
-    <div class="spinner-grow text-secondary" role="status" style="animation-delay: 0.4s;">
-      <span class="sr-only"></span>
-    </div>
-  </div>
-}
-
-@if (pokemon && !loading) {
+@if (pokemon) {
   <div class="pokemon-details">
     <div class="row">
       <div class="col-md-12">

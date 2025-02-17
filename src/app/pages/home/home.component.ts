@@ -35,8 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
   loadPokemonDetails() {
-    if (this.selectedPokemon) {
-      this.loading = true;
+    
+    if (!this.selectedPokemon)  return;
+    this.loading = true;
       this.pokemonDetails = null;
       
       this.pokemonDetailService.getPokemonDetails(this.selectedPokemon.id.toString())
@@ -49,6 +50,6 @@ export class HomeComponent implements OnInit {
             this.loading = false;
           }
         });
-    }
+    
   }
 }
