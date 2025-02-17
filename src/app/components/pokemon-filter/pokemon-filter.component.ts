@@ -21,9 +21,9 @@ export class PokemonFilterComponent implements OnInit {
   allPokemon: PokemonOption[] = [];
   filteredPokemon: PokemonOption[] = [];
   selectedPokemon: PokemonOption | null = null;
-  virtualScrollItemSize: number = 38
 
-  constructor(private pokemonapiService: PokemonDetailService) { }
+
+  constructor(private pokemonapiService: PokemonDetailService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.pokemonapiService.getAllPokemons()
@@ -43,15 +43,7 @@ export class PokemonFilterComponent implements OnInit {
     } else {
       this.filteredPokemon = [...this.allPokemon];
     }
-  }
 
-  adjustScrollSize() {
-    if (this.filteredPokemon.length <= 3) {
-
-      this.virtualScrollItemSize = this.filteredPokemon.length * 38; 
-    } else {
-      this.virtualScrollItemSize = 38;
-    }this.adjustScrollSize();
   }
 
   onSelect(event: any) {
@@ -60,7 +52,7 @@ export class PokemonFilterComponent implements OnInit {
   }
 
   onClear() {
+    this.filteredPokemon = [...this.allPokemon];
     this.selectedPokemon = null;
-    this.adjustScrollSize();
   }
 }

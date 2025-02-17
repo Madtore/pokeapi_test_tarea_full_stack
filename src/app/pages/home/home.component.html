@@ -3,7 +3,7 @@
     <div class="grid-item grid-item-left">
         <app-pokemon-filter (pokemonSelected)="onPokemonSelected($event)"></app-pokemon-filter>
     </div>  
-    @if (!selectedPokemon && !loading) {
+    @if (isFistLoad) {
       <div class="no-pokemon-message">
         <h3>Selecciona un Pokémon para ver sus detalles</h3>
       </div>

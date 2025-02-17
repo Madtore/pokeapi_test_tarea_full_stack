@@ -3,23 +3,11 @@
     <h3 class="card-title">Selecciona un Pokémon</h3>
 
     <div class="w-full container">
-      <p-autoComplete
-        [(ngModel)]="selectedPokemon"
-        [suggestions]="filteredPokemon"
-        (completeMethod)="filterPokemon($event)"
-        field="name"
-        [dropdown]="true"
-        [virtualScroll]="true"
-        [virtualScrollItemSize]="38"
-        (onSelect)="onSelect($event)"
-        (onClear)="onClear()"
-        placeholder="Buscar Pokémon..."
-        [style]="{'width': '500px'}"
-        styleClass="!important"
-      >
+      <p-autoComplete [(ngModel)]="selectedPokemon" [suggestions]="filteredPokemon"
+        (completeMethod)="filterPokemon($event)" field="name" [dropdown]="true" [virtualScroll]="false"
+         (onSelect)="onSelect($event)"
+        (onClear)="onClear()" placeholder="Buscar Pokémon..." [style]="{'width': '500px'}" styleClass="!important">
       </p-autoComplete>
     </div>
   </div>
 </div>
-
- 

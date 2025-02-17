@@ -19,7 +19,8 @@ import { Pokemon, PokemonOption } from '../../models/pokemon.model';
 export class HomeComponent implements OnInit {
   selectedPokemon: PokemonOption | null = null;
   pokemonDetails: Pokemon | null = null;
-  loading = false;
+  loading = true;
+  isFistLoad = true;
 
   constructor(
     private pokemonDetailService: PokemonDetailService
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   onPokemonSelected(pokemon: PokemonOption) {  
+    this.isFistLoad = false;
     this.selectedPokemon = pokemon; 
     this.loadPokemonDetails();
   }
